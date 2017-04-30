@@ -18,7 +18,12 @@ export class AppComponent implements OnInit {
       .map(e => e['target'].value)
       .filter(text => text.length >= 3)
       .debounceTime(400)
-      .distinctUntilChanged();
+      .distinctUntilChanged()
+      .flatMap(searchText => {
+        var url = 'https://api.spotify.com/v1/search?type=artist&q=' + searchText;
+        var promise = $.getJSON(url);
+        return Observable.fromPromise(promise);
+      });
 
     keyups.subscribe(data => console.log(data));
   }
