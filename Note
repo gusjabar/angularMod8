@@ -1,0 +1,10 @@
+install jquery
+
+accepted
+Using jQuery from Angular2 is a breeze compared to ng1. If you are using TypeScript you could first reference jQuery typescript definition.
+
+tsd install jquery --save
+or
+typings install dt~jquery --global --save
+
+in your ts file add this: import $ from 'jquery';
